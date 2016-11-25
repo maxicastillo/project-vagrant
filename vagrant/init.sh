@@ -49,6 +49,7 @@ sudo apt-get install -y php7.0
 sudo apt-get install -y libapache2-mod-php7.0
 sudo apt-get install -y php7.0-mysql
 sudo apt-get install -y php7.0-xml
+sudo apt-get install -y php5-curl
 
 echo "- Configuring PHP."
 sudo a2enmod rewrite
