@@ -16,10 +16,17 @@ The project has the following pre requisites:
 * Vagrant [http://www.vagrantup.com/](http://www.vagrantup.com/)
 * VirtualBox [http://www.virtualbox.org/](http://www.virtualbox.org/)
 
-Once you have installed the prerequisites, fork and clone the project repository, copy the [vagrant folder](./vagrant) into your project root folder, and execute the following commands:
+Once you have installed the prerequisites, fork and clone the project repository, copy the [vagrant folder](./vagrant) into your project root folder, and modify the following lines in [vagrant/init.sh](./vagrant/init.sh):
 
 ```
-$ cd vagrant
+GIT_EMAIL="user@domain.com"
+GIT_USER="User Name"
+MYSQL_PASSWORD="pass"
+```
+
+Now execute the following command:
+
+```
 $ vagrant up
 ```
 
