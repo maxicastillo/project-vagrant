@@ -58,7 +58,8 @@ sudo apt-get install -y php7.0
 sudo apt-get install -y libapache2-mod-php7.0
 sudo apt-get install -y php7.0-mysql
 sudo apt-get install -y php7.0-xml
-sudo apt-get install -y php5-curl
+sudo apt-get install -y php7-curl
+sudo apt-get install -y php7.0-mbstring
 
 echo "- Configuring PHP."
 sudo a2enmod rewrite
@@ -67,8 +68,7 @@ echo "- Restarting Apache2."
 sudo service apache2 restart
 
 echo "- Installing Composer."
-wget https://getcomposer.org/installer
-chmod +x composer.phar
+curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 echo "- Installing PHPUnit."
