@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  if File.file?("symfony.box")
+    vm_box = "symfony.box"
+  else
+    vm_box = "ubuntu/trusty64"
+  end
+
+  config.vm.box = vm_box
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 443, host: 8443
+  config.vm.network "forwarded_port", guest: 3306, host: 8306
+
+  config.vm.network "private_network", ip: "192.168.80.1"
+
+  config.vm.synced_folder "../", "/var/www"
+
+  config.vm.provider "virtualbox" do |vbox|
+    vbox.cpus = 1
+    vbox.memory = 1024
+    vbox.name = "Symfony Application"
+  end
+
+  config.vm.provision "shell", path: "init.sh"
+end

@@ -1,0 +1,26 @@
+<VirtualHost *:80>
+  ServerName localhost
+  ServerAlias symfony.localhost
+
+  DocumentRoot /var/www/web
+  <Directory /var/www/web>
+    AllowOverride All
+    Require all granted
+
+    <IfModule mod_rewrite.c>
+      Options -MultiViews
+      RewriteEngine On
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteRule ^(.*)$ app_dev.php [QSA,L]
+    </IfModule>
+  </Directory>
+
+  <Directory /var/www/project/web/bundles>
+    <IfModule mod_rewrite.c>
+      RewriteEngine Off
+    </IfModule>
+  </Directory>
+
+  ErrorLog /var/log/apache2/symfony_error.log
+  CustomLog /var/log/apache2/symfony_access.log combined
+</VirtualHost>
