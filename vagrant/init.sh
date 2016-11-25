@@ -20,6 +20,7 @@ git config --global user.email $GIT_EMAIL
 
 echo "- Installyng Ruby."
 sudo apt-get install -y ruby
+sudo gem install sass
 
 echo "- Installyng NodeJS."
 sudo apt-get install -y nodejs
@@ -29,6 +30,9 @@ echo "- Installyng NPM."
 sudo apt-get install -y npm
 sudo npm install -g npm
 sudo npm install -g gulp
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 
 echo "- Installing Apache2."
 sudo apt-get install -y apache2
@@ -47,8 +51,9 @@ echo "- Restarting Apache2."
 sudo service apache2 restart
 
 echo "- Setting required MySQL configurations."
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password $MYSQL_PASSWORD'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD'
+sudo apt-get install -y debconf-utils
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_PASSWORD"
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD"
 
 echo "- Installing MySQL."
 sudo apt-get install -y mysql-server
@@ -58,8 +63,8 @@ sudo apt-get install -y php7.0
 sudo apt-get install -y libapache2-mod-php7.0
 sudo apt-get install -y php7.0-mysql
 sudo apt-get install -y php7.0-xml
-sudo apt-get install -y php7-curl
 sudo apt-get install -y php7.0-mbstring
+sudo apt-get install -y php-curl
 
 echo "- Configuring PHP."
 sudo a2enmod rewrite
