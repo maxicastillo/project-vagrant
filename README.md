@@ -18,10 +18,14 @@ The project has the following pre requisites:
 
 Once you have installed the prerequisites, fork and clone the project repository, copy the [vagrant folder](./vagrant) into your project root folder, and execute the following commands:
 
+```
 $ cd vagrant
 $ vagrant up
+```
 
 Thats all, is pretty simple.
+
+If you need more information related to Vagrant, go to the official [Vagrant documentation](https://www.vagrantup.com/docs/).
 
 ### MIT License ###
 ##### Copyright (c) 2016 Esteban Spina #####
