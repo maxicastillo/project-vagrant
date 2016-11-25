@@ -21,6 +21,15 @@ git config --global user.email $GIT_EMAIL
 echo "- Installyng Ruby."
 sudo apt-get install -y ruby
 
+echo "- Installyng NodeJS."
+sudo apt-get install -y nodejs
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+echo "- Installyng NPM."
+sudo apt-get install -y npm
+sudo npm install -g npm
+sudo npm install -g gulp
+
 echo "- Installing Apache2."
 sudo apt-get install -y apache2
 
@@ -58,8 +67,14 @@ echo "- Restarting Apache2."
 sudo service apache2 restart
 
 echo "- Installing Composer."
-curl -sS https://getcomposer.org/installer | php
+wget https://getcomposer.org/installer
+chmod +x composer.phar
 sudo mv composer.phar /usr/local/bin/composer
+
+echo "- Installing PHPUnit."
+wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+sudo mv phpunit.phar /usr/local/bin/phpunit
 
 echo "- Cleaning unnecesary packages."
 sudo apt-get autoremove -y --purge
