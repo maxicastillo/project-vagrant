@@ -3,7 +3,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 GIT_EMAIL="user@domain.com"
 GIT_USER="User Name"
-MYSQL_PASSWORD=""
+MYSQL_PASSWORD="pass"
 
 sudo add-apt-repository ppa:ondrej/php
 
